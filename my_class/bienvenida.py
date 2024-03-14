@@ -3,6 +3,11 @@ import time
 from .animacion import Animacion
 
 class Bienvenida (Animacion):
+
+    scene = "animations_ascii/bienvenida"
+    scene2 = "animations_ascii/dificultad"
+    resume = "animations_ascii/resumen"
+    
     def __init__(self):
         super().__init__()
  
@@ -12,22 +17,14 @@ class Bienvenida (Animacion):
         return nombre_mascota
 
     def obtener_dificultad(self):
-        print("\nSelecciona la dificultad:")
-        print("1. Fácil")
-        print("2. Medio")
-        print("3. Difícil")
+        print(self.findScene(self.scene2))        
+
         dificultad = input("\nElige la dificultad (1/2/3): ")
         return dificultad
 
     def bienvenido(self):
-        
-        print("****************************")
-        print("*                          *")
-        print("*   Bienvenido al Juego    *")
-        print("*         de               *")
-        print("*       Tamagotchi!        *")
-        print("*                          *")
-        print("****************************")
+
+        print(self.findScene(self.scene))        
 
         nombre_mascota = self.obtener_nombre_mascota()
 
@@ -45,8 +42,8 @@ class Bienvenida (Animacion):
             if dificultad:
                 self.clear_console()
                 time.sleep(0.5)
-                print("\nPet:", nombre_mascota," ")
-                print("\nDif:", dificultadText[dificultad]," ")
+                
+                print(self.findScene(self.resume).format(nombre_mascota = nombre_mascota,dificultad_text =dificultadText[dificultad]))
 
                 time.sleep(5)
                 return False

@@ -7,3 +7,9 @@ welcome = Bienvenida()
 
 while instanceBucle:
     instanceBucle = welcome.bienvenido()
+
+    if not instanceBucle:
+        
+        
+
+        instanceBucle = True
