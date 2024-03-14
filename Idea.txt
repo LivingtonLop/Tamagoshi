@@ -1,0 +1,38 @@
+Tamagoshi o Mascota virtual
+
+Mantener a la mascota viva, mediante el uso de teclas para que no muera
+
+1. animacion (clases)
+
+	(Funciones que retornan la animacion)
+	1.0 Normal (Estatica o viva)
+	1.1 Durmiendo (zzz)(S)++
+	1.2 Hambre (gumi gumi) (H)++
+	1.3 Aburrido (ahhhhh) (B) +++
+	1.4 Limpieza (salud) (C)+
+	1.5 Muerte (Game Over)
+
+2. estados
+	
+	1 - 10 
+	(1 como normal y 10 como limite)
+	Si el tamagoshi tiene todas sus estadisticas a 10 pasa a estado muerto (game over)
+	
+3.Interfaz (ASCII)
+	
+	3.1
+	Bienvenido
+	INPUT (Name Mascota)
+	Dificultad (
+		Facil -> Cuando tus estadisticas (4) estan al limite, tu mascota tiene una probabilidad de sobrevivir en un 80%
+		Media -> Cuando tus estadisticas (2 - 3) estan al limite, tu mascota tiene una probabilidad de sobrevivir en un 60%
+		Dificil -> Cuando tus estadisticas (1 - 2) estan al limite, tu mascota tiene una probabilidad de sobrevivir en un 30%
+	)
+	3.2
+	Mascota
+	Sleep -> 0-10
+	Bored -> 0-10
+	Clear -> 0-10
+	Hungry -> 0-10
+	
+	Animacion (mascota -> esta es dinamica dependiendo del estado que se sastifaga, este cambiaria su animacion)
