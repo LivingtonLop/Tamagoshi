@@ -22,7 +22,7 @@ class Bienvenida (Animacion):
         dificultad = input("\nElige la dificultad (1/2/3): ")
         return dificultad
 
-    def bienvenido(self):
+    def bienvenido(self) -> list:
 
         print(self.findScene(self.scene))        
 
@@ -46,4 +46,4 @@ class Bienvenida (Animacion):
                 print(self.findScene(self.resume).format(nombre_mascota = nombre_mascota,dificultad_text =dificultadText[dificultad]))
 
                 time.sleep(5)
-                return False
+                return [nombre_mascota,dificultad]

@@ -1,15 +1,24 @@
 from my_class.bienvenida import Bienvenida
+from my_class.tamagoshi import Tamagoshi
+
 
 #bucle para correr el programa (temporal)
 
-instanceBucle = True 
 welcome = Bienvenida()
 
-while instanceBucle:
-    instanceBucle = welcome.bienvenido()
 
-    if not instanceBucle:
-        
-        
+while True:
+    Datos = welcome.bienvenido()
 
-        instanceBucle = True
+    if type(Datos) is list:
+        break
+
+#nuevo bucle to el game
+pet =  Tamagoshi(petName=Datos[0],dificultadPet=Datos[1])
+
+eyes_open = True
+
+while True:
+    pet.live()
+    pet.animacionNormal(eyes_open)
+    eyes_open = not eyes_open
