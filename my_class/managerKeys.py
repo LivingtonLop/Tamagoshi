@@ -1,7 +1,11 @@
 #hereda todas las animaciones (Dormir, Alimentarse, Entreternerse y Limpiar)
 import msvcrt
+from .animacionDurmiendo import animacionDurmiendo
+from .animacionComiendo import animacionComiendo
+from .animacionJugando import animacionJugando
+from .animacionLimpiando import animacionLimpiando 
 
-class ManagerKey():
+class ManagerKey(animacionDurmiendo, animacionLimpiando, animacionComiendo, animacionJugando):
     def __init__(self):
         super().__init__()
         self.acciones = {

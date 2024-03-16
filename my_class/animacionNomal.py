@@ -10,8 +10,8 @@ class AnimacionPet(Animacion):
     def __init__(self):
         super().__init__()
 
-    def animacionNormal(self, eyes_open: bool):
-        if eyes_open:
+    def animacionNormal(self, mov: bool):
+        if mov:
             print(self.findScene(self.scene))
         else:
             print(self.findScene(self.scene2))

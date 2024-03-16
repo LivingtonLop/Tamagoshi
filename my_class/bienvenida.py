@@ -47,3 +47,6 @@ class Bienvenida (Animacion):
 
                 time.sleep(5)
                 return [nombre_mascota,dificultad]
+
+    def saved_game(self):
+        pass

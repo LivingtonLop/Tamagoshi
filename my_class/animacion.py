@@ -13,3 +13,11 @@ class Animacion():
         except FileNotFoundError:
             return "NOT FOUND : 404 ERROR"
 
+    def animacionFrame(self, frame1, frame2: str)-> list:
+        return [
+                    [frame1],
+                    [frame2],
+                    [frame1],
+                    [frame2],
+                    [frame1]
+                ]

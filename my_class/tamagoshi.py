@@ -15,7 +15,7 @@ class Tamagoshi(AnimacionPet, ManagerKey):
         self.aburrimiento = 0
         self.hambre = 0
         self.limpieza = 0
-        self.eyes_open = True
+        self.mov = True
 
     def live(self):
         self.clear_console()
@@ -27,46 +27,41 @@ class Tamagoshi(AnimacionPet, ManagerKey):
 
         if self.dormir >= 10:
             print("¡Tu Tamagotchi está demasiado cansado! Necesita dormir.[d]")
-            self.dormir -= 1 if self.dormir < 15 else 0  
-        
+
         if self.aburrimiento >= 10:
             print("¡Tu Tamagotchi está muy aburrido! Dale algo para entretenerse.[e]")
-            self.aburrimiento -= 1 if self.aburrimiento < 15 else 0  
 
         if self.hambre >= 10:
             print("¡Tu Tamagotchi está hambriento! Aliméntalo.[a]")
-            self.hambre -= 1 if self.hambre < 15 else 0  
         
         if self.limpieza >= 10:
             print("¡Tu Tamagotchi está sucio! Debes limpiarlo.[l]")
-            self.limpieza -= 1 if self.limpieza < 15 else 0  
-        
+                
         if self.key_push():
             tecla = self.get_key()
             accion = self.acciones.get(tecla)
             accion()
-        
-        self.animacionNormal(self.eyes_open) #Esto tiene que salir de aqui (hacer un mapa para esto, para que las animaciones sean dinamicas y no estaticas )
-        self.eyes_open = not self.eyes_open
+        else:
+            self.animacionNormal(mov=self.mov)
 
-        
+        self.mov = not self.mov
 
     def dormirAnimacion(self):
         self.dormir = self.dormir - 10
-        #animacion dormir
+        self.animacionDurmiendo()
 
     def limpiarAnimacion(self):
         self.limpieza = self.limpieza - 10
-        print("limpiar...zzz") #animacion
+        self.animacionLimpiando()
 
     def alimentarAnimacion(self):
         self.hambre = self.hambre - 10
-        print("alimentar...zzz") #animacion
+        self.animacionComiendo()
 
     def entretenerAnimacion(self):
         self.aburrimiento = self.aburrimiento - 10
-        print("entretener...zzz") #animacion
-
+        self.animacionJugando() 
+        
     def savePet(self):
         pet = {"nombre": self.name, "dificultad": self.dificultad}
         folder = "../pets/pets.json"
