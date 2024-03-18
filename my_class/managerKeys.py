@@ -21,3 +21,4 @@ class ManagerKey(animacionDurmiendo, animacionLimpiando, animacionComiendo, anim
     
     def get_key(self):
         return msvcrt.getch().decode('utf-8')
+        

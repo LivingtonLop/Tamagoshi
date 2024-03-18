@@ -21,3 +21,6 @@ class Animacion():
                     [frame2],
                     [frame1]
                 ]
+
+
+        

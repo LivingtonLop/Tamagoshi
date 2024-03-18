@@ -1,4 +1,6 @@
 import time
+import os
+import json
 
 from .animacion import Animacion
 
@@ -48,5 +50,13 @@ class Bienvenida (Animacion):
                 time.sleep(5)
                 return [nombre_mascota,dificultad]
 
-    def saved_game(self):
-        pass
+    def saved_game(self) -> list:
+
+        file = "pets\\pets.json"
+        pets = {}
+        if os.path.exists(file):
+            print("Partidas Guardadas")
+            with open(file, "r") as file_json:
+                pets = json.load(file_json)
+
+        return list(pets.values()) if len(list(pets.values())) > 0 else False

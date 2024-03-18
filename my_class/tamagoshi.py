@@ -6,15 +6,15 @@ from .animacionNomal import AnimacionPet
 from .managerKeys import ManagerKey
 class Tamagoshi(AnimacionPet, ManagerKey):
 
-    def __init__(self, petName, dificultadPet) -> None:
+    def __init__(self, petName, dificultadPet,domir = 0, aburrimiento = 0, hambre = 0, limpieza = 0) -> None:
         super().__init__()
         self.name = petName
         self.dificultad = dificultadPet
         #default
-        self.dormir = 0
-        self.aburrimiento = 0
-        self.hambre = 0
-        self.limpieza = 0
+        self.dormir = domir
+        self.aburrimiento = aburrimiento
+        self.hambre = hambre
+        self.limpieza = limpieza
         self.mov = True
 
     def live(self):
@@ -25,16 +25,16 @@ class Tamagoshi(AnimacionPet, ManagerKey):
         self.hambre += random.randint(0, 4)
         self.limpieza += random.randint(0, 1)
 
-        if self.dormir >= 10:
+        if self.dormir >= 100:
             print("¡Tu Tamagotchi está demasiado cansado! Necesita dormir.[d]")
 
-        if self.aburrimiento >= 10:
+        if self.aburrimiento >= 100:
             print("¡Tu Tamagotchi está muy aburrido! Dale algo para entretenerse.[e]")
 
-        if self.hambre >= 10:
+        if self.hambre >= 100:
             print("¡Tu Tamagotchi está hambriento! Aliméntalo.[a]")
         
-        if self.limpieza >= 10:
+        if self.limpieza >= 100:
             print("¡Tu Tamagotchi está sucio! Debes limpiarlo.[l]")
                 
         if self.key_push():
@@ -63,17 +63,17 @@ class Tamagoshi(AnimacionPet, ManagerKey):
         self.animacionJugando() 
         
     def savePet(self):
-        pet = {"nombre": self.name, "dificultad": self.dificultad}
-        folder = "../pets/pets.json"
+        pet = {"nombre": self.name, "dificultad": self.dificultad ,"d":self.dormir , "e":self.aburrimiento , "h": self.hambre,"l":self.limpieza}
+        file = "pets\\pets.json"
+        pets = {}
         
-        # Verificar si el archivo JSON existe
-        if os.path.exists(folder):
-            with open(folder, "r") as file_json:
+        if os.path.exists(file):
+            with open(file, "r") as file_json:
                 pets = json.load(file_json)
-        else:
-            pets = {}
 
         pets.update(pet)
 
-        with open(folder, "w") as archivo_json:
+        with open(file, "w") as archivo_json:
             json.dump(pets, archivo_json, indent=4)
+
+        self.animacionSaved()

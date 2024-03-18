@@ -17,3 +17,20 @@ class AnimacionPet(Animacion):
             print(self.findScene(self.scene2))
 
         time.sleep(1)
+
+    def animacionSaved(self):
+        print(
+            """
+╔════════════════════════════════════╗
+║                                    ║
+║                                    ║
+║                                    ║
+║            GOOD BYA!!              ║
+║                                    ║
+║                                    ║
+║                                    ║
+╚════════════════════════════════════╝
+            """
+        )
+        time.sleep(2)
+        exit()
