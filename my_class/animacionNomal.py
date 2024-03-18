@@ -19,6 +19,7 @@ class AnimacionPet(Animacion):
         time.sleep(1)
 
     def animacionSaved(self):
+        self.clear_console()
         print(
             """
 ╔════════════════════════════════════╗

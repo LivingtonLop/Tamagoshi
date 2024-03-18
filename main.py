@@ -6,21 +6,17 @@ from my_class.tamagoshi import Tamagoshi
 welcome = Bienvenida()
 Datos = None
 
-while True:
-    Datos = welcome.saved_game()
+Datos = welcome.bienvenido()
 
-    if type(Datos) is list: break
 
-    Datos = welcome.bienvenido()
+if type(Datos) is list:
 
-    if type(Datos) is list: break
+    #nuevo bucle to el game
+    pet =  Tamagoshi(petName=Datos[0],dificultadPet=Datos[1])
 
-#nuevo bucle to el game
-pet =  Tamagoshi(petName=Datos[0],dificultadPet=Datos[1])
+    if len(Datos) > 2: 
+        pet =  Tamagoshi(petName=Datos[0],dificultadPet=Datos[1],domir=Datos[2],aburrimiento=Datos[3],hambre=Datos[4],limpieza=Datos[5])
 
-if len(Datos) > 2: 
-    pet =  Tamagoshi(petName=Datos[0],dificultadPet=Datos[1],domir=Datos[2],aburrimiento=Datos[3],hambre=Datos[4],limpieza=Datos[5])
-
-while True:
-    pet.live()
+    while True:
+        pet.live()
 

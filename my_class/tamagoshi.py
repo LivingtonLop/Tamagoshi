@@ -4,7 +4,7 @@ import os
 
 from .animacionNomal import AnimacionPet
 from .managerKeys import ManagerKey
-class Tamagoshi(AnimacionPet, ManagerKey):
+class Tamagoshi(ManagerKey):
 
     def __init__(self, petName, dificultadPet,domir = 0, aburrimiento = 0, hambre = 0, limpieza = 0) -> None:
         super().__init__()
@@ -24,6 +24,8 @@ class Tamagoshi(AnimacionPet, ManagerKey):
         self.aburrimiento += random.randint(0, 3)
         self.hambre += random.randint(0, 4)
         self.limpieza += random.randint(0, 1)
+
+        print("Para salir presione [x]")
 
         if self.dormir >= 100:
             print("¡Tu Tamagotchi está demasiado cansado! Necesita dormir.[d]")

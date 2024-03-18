@@ -1,19 +1,27 @@
 #hereda todas las animaciones (Dormir, Alimentarse, Entreternerse y Limpiar)
 import msvcrt
+from .animacionNomal import AnimacionPet
 from .animacionDurmiendo import animacionDurmiendo
 from .animacionComiendo import animacionComiendo
 from .animacionJugando import animacionJugando
 from .animacionLimpiando import animacionLimpiando 
 
-class ManagerKey(animacionDurmiendo, animacionLimpiando, animacionComiendo, animacionJugando):
+class ManagerKey(AnimacionPet, animacionDurmiendo, animacionLimpiando, animacionComiendo, animacionJugando):
     def __init__(self):
         super().__init__()
         self.acciones = {
-            "a" : self.alimentarAnimacion,
-            "e" : self.entretenerAnimacion,
-            "d" : self.dormirAnimacion,
-            "l" : self.limpiarAnimacion,
-            "s": self.savePet
+            "a" : lambda : self.alimentarAnimacion(),
+            "e" : lambda : self.entretenerAnimacion(),
+            "d" : lambda : self.dormirAnimacion(),
+            "l" : lambda : self.limpiarAnimacion(),
+            "s": lambda : self.savePet(),
+            "x" : lambda : self.animacionSaved()
+        }
+
+        self.acciones_bienvenida = {
+            "n" : lambda : self.nuevaPet(),
+            "c" : lambda : self.continuarPet(),
+            "x" : lambda : self.animacionSaved()
         }
 
     def key_push(self):
@@ -22,3 +30,4 @@ class ManagerKey(animacionDurmiendo, animacionLimpiando, animacionComiendo, anim
     def get_key(self):
         return msvcrt.getch().decode('utf-8')
         
+    
