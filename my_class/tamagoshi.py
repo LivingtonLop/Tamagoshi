@@ -1,8 +1,5 @@
 import random
-import json
-import os
 
-from .animacionNomal import AnimacionPet
 from .managerKeys import ManagerKey
 class Tamagoshi(ManagerKey):
 
@@ -16,29 +13,33 @@ class Tamagoshi(ManagerKey):
         self.hambre = hambre
         self.limpieza = limpieza
         self.mov = True
+        self.vida = 100
+        self.num_st = 100
+        self.num_rest_st = 50
+        self.num_t_st = 400
 
     def live(self):
         self.clear_console()
-        
-        self.dormir += random.randint(0, 2)
-        self.aburrimiento += random.randint(0, 3)
-        self.hambre += random.randint(0, 4)
-        self.limpieza += random.randint(0, 1)
+        self.dormir += random.randint(0, 2) #2
+        self.aburrimiento += random.randint(0, 3) #2
+        self.hambre += random.randint(0, 4) #1
+        self.limpieza += random.randint(0, 1)#3
 
         print("Para salir presione [x]")
+        print("Para Guardar Partida y salir [s]")
 
-        if self.dormir >= 100:
+        if self.dormir >= self.num_st:
             print("¡Tu Tamagotchi está demasiado cansado! Necesita dormir.[d]")
 
-        if self.aburrimiento >= 100:
+        if self.aburrimiento >= self.num_st:
             print("¡Tu Tamagotchi está muy aburrido! Dale algo para entretenerse.[e]")
 
-        if self.hambre >= 100:
+        if self.hambre >= self.num_st:
             print("¡Tu Tamagotchi está hambriento! Aliméntalo.[a]")
         
-        if self.limpieza >= 100:
+        if self.limpieza >= self.num_st:
             print("¡Tu Tamagotchi está sucio! Debes limpiarlo.[l]")
-                
+        
         if self.key_push():
             tecla = self.get_key()
             accion = self.acciones.get(tecla)
@@ -48,34 +49,32 @@ class Tamagoshi(ManagerKey):
 
         self.mov = not self.mov
 
+        self.diedTamagoshi()
+
     def dormirAnimacion(self):
-        self.dormir = self.dormir - 10
+        self.dormir -= self.num_rest_st
         self.animacionDurmiendo()
 
     def limpiarAnimacion(self):
-        self.limpieza = self.limpieza - 10
+        self.limpieza -= self.num_rest_st
         self.animacionLimpiando()
 
     def alimentarAnimacion(self):
-        self.hambre = self.hambre - 10
+        self.hambre -= self.num_rest_st
         self.animacionComiendo()
 
     def entretenerAnimacion(self):
-        self.aburrimiento = self.aburrimiento - 10
+        self.aburrimiento -= self.num_rest_st
         self.animacionJugando() 
         
-    def savePet(self):
-        pet = {"nombre": self.name, "dificultad": self.dificultad ,"d":self.dormir , "e":self.aburrimiento , "h": self.hambre,"l":self.limpieza}
-        file = "pets\\pets.json"
-        pets = {}
+    def diedTamagoshi(self):
         
-        if os.path.exists(file):
-            with open(file, "r") as file_json:
-                pets = json.load(file_json)
+        sumaT = self.aburrimiento + self.dormir + self.limpieza + self.hambre 
 
-        pets.update(pet)
-
-        with open(file, "w") as archivo_json:
-            json.dump(pets, archivo_json, indent=4)
-
-        self.animacionSaved()
+        if  sumaT >= self.num_t_st:
+            indice = str(self.dificultad)
+            porcentaje = self.porcentajes[indice]
+            if self.verificar_muerte(porcentaje) : self.vida -= 1
+        if self.vida == 0: 
+            self.died_animacion()
+        

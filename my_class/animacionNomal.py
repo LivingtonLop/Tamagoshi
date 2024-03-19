@@ -6,7 +6,7 @@ class AnimacionPet(Animacion):
     scene = "animations_ascii/petnormal"
     scene2 = "animations_ascii/petnormal2"
     died = "animations_ascii/petmuerto"
-
+    died2 = "animations_ascii/gameover"
     def __init__(self):
         super().__init__()
 
@@ -17,6 +17,18 @@ class AnimacionPet(Animacion):
             print(self.findScene(self.scene2))
 
         time.sleep(1)
+
+    def died_animacion(self):
+        self.clear_console()
+        print(self.findScene(self.died))
+        print("Ha muerto tu mascota :( !!")
+        time.sleep(3)
+
+        self.clear_console()
+        print(self.findScene(self.died2))
+        time.sleep(3)
+
+        self.animacionSaved()
 
     def animacionSaved(self):
         self.clear_console()

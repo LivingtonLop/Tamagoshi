@@ -19,4 +19,3 @@ if type(Datos) is list:
 
     while True:
         pet.live()
-

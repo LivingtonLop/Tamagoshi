@@ -35,11 +35,12 @@ class Bienvenida (ManagerKey):
             while not self.key_push():
                 tecla = self.get_key()
                 accion = self.acciones_bienvenida.get(tecla)
-                
+                self.clear_console()
                 return accion()
 
         else:
-            return self.nuevaPet
+            
+            return self.nuevaPet()
         
 
     def saved_game(self) -> list:
@@ -54,7 +55,6 @@ class Bienvenida (ManagerKey):
         return list(pets.values()) if len(list(pets.values())) > 0 else False
     
     def nuevaPet(self) -> list:
-        self.clear_console()
         nombre_mascota = self.obtener_nombre_mascota()
 
         if nombre_mascota:
