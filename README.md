@@ -1,6 +1,30 @@
 # Tamagoshi
-Practica 01 - Python - Conocer POO y estados 
+Practice 01 -> Python herences and Conventions
 
+Structure :
+    TAMAGOSHI :
+        animations_ascii
+            *.txt
+        my_class
+            animation { 
+                animation_all
+                manager_key { 
+                    welcome
+                    tamagotchi
+                }
+            }
+        pets
+            You pets.json
+        main.py
+            python main.py
 
-Este proyecto es de practica de conceptos como la herencia, uso de convencion y buenas practicas a la hora de programar
+Finish
 
+Convencion 
+Class = ClassName
+file = class_name
+folders = my_class
+functions = function_class
+variables = variable_class
+
+Herencias uwu

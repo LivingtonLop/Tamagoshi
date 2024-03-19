@@ -1,9 +1,9 @@
 ╔════════════════════════════════════╗
 ║                                    ║
 ║                                    ║
-║      Pet : {nombre_mascota}        ║
+║      Pet : {pet_name}        ║
 ║                                    ║
-║      Dificultad : {dificultad_text}║
+║      Difficulty : {difficulty_text}║
 ║                                    ║
 ║                                    ║
 ╚════════════════════════════════════╝

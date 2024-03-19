@@ -1,8 +1,8 @@
 ╔════════════════════════════════════╗
 ║                                    ║
-║   Selecciona la dificultad:        ║
-║       1. Fácil"                    ║
-║       2. Medio"                    ║
-║       3. Difícil"                  ║
+║       Select Difficulty:           ║
+║           1. Easy                  ║
+║           2. Medio                 ║
+║           3. Har                   ║
 ║                                    ║
 ╚════════════════════════════════════╝
